@@ -899,8 +899,10 @@ int getrusage(int who, struct rusage *usage){
 	return _pure_syscall(__NR_getrusage,usage);
 }
 
-int gettimeofday(struct timeval *tv, struct timezone *tz){
-	return _pure_syscall(__NR_gettimeofday, tv, tz);
+// int gettimeofday(struct timeval *tv, struct timezone *tz){
+int gettimeofday(struct timeval *__restrict __tv,
+			 void *__restrict __tz) {
+	return _pure_syscall(__NR_gettimeofday, __tv, __tz);
 }
 
 int settimeofday(const struct timeval *tv , const struct timezone *tz){

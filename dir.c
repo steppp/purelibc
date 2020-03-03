@@ -103,7 +103,8 @@ struct dirent *readdir(DIR *dir){
 	}
 }
 
-int getdents64(unsigned int fd, struct dirent64 *dirp, unsigned int count);
+// int getdents64(unsigned int fd, struct dirent64 *dirp, unsigned int count);
+__ssize_t getdents64 (int __fd, void *__buffer, size_t __length);
 struct dirent64 *readdir64(DIR *dir){
 	register struct dirent64 *this;
 	this=((struct dirent64 *) (dir->buf + dir->bufpos));
